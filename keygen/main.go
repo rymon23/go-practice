@@ -1,11 +1,11 @@
-package main
+package keygen
 
 import (
 	"fmt"
 	"go-practice/password"
 )
 
-func main()  {
+func Execute()  {
 	// reader := bufio.NewReader(os.Stdin)
 	// fmt.Println("Type a password to encrypt: ")
 	// text, _ := reader.ReadString('\n')

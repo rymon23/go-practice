@@ -5,9 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"strings"
-
 	"bitbucket.org/EMN/mulch/mulch"
-
 	"google.golang.org/grpc/codes"
 )
 
