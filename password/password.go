@@ -32,7 +32,7 @@ func Authorize(crypt []byte, pass string) error {
 
 func TestPwd(crypt []byte) {
 	// Prompt the user to enter a password
-    fmt.Println("Enter your new password to test: ")
+    fmt.Printf("Enter your new password to test: \n\n")
     // Variable to store the users input
     var pwd string
     // Read the users input
@@ -47,12 +47,13 @@ func TestPwd(crypt []byte) {
 		fmt.Println(err)
 		return
 	}
-	fmt.Printf("Password '%v' is authorized", pwd)
+	fmt.Printf("Password '%v' validated! \n", pwd)
 }
 
 func GetPwd(displayPwd bool) []byte {
     // Prompt the user to enter a password
-    fmt.Println("Enter a password")
+    fmt.Printf("Enter a password: \n\n")
+
     // Variable to store the users input
     var pwd string
     // Read the users input
@@ -61,7 +62,7 @@ func GetPwd(displayPwd bool) []byte {
         log.Println(err)
 	}
 	if displayPwd {
-		fmt.Printf("Password is: %v \n", pwd)
+		fmt.Printf("\n Password: '%v' \n", pwd)
 	}
     // Return the users input as a byte slice which will save us
     // from having to do this conversion later on

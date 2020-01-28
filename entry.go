@@ -6,6 +6,9 @@ import (
 )
 
 func main() {
+	fmt.Println("___________________________________")
 	fmt.Println("___Password BCrypt Key Generator___")
+	fmt.Println("___________________________________")
+
 	keygen.Execute()
 }
