@@ -5,19 +5,21 @@ import (
 	"io/ioutil"
 )
 
+const srcPath = "../src/"
+
 type Page struct {
 	Title string
 	Body []byte
 }
 
 func (p *Page) Save() error  {
-	filename := p.Title + ".txt"
-	return ioutil.WriteFile(filename, p.Body, 0600)
+	filename := p.Title + ".html"
+	return ioutil.WriteFile(srcPath + filename, p.Body, 0600)
 }
 
 func LoadPage(title string) (*Page, error) {
-	filename := title + ".txt"
-	body, err := ioutil.ReadFile(filename)
+	filename := title + ".html"
+	body, err := ioutil.ReadFile(srcPath + filename)
 	if err != nil {
 		return nil, err
 	}
