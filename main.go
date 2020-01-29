@@ -5,8 +5,8 @@ import (
 	//"go-practice/keygen"
 	//"go-practice/gowiki"
 	// "go-practice/webserver"
+	"go-practice/content"
 	"go-practice/webserverfinal"	
-	// "path/filepath"
 )
 
 func main() {
@@ -22,5 +22,6 @@ func main() {
 	// webserver.Execute(":8080")
 	// webserver.ExecuteWiki(":8080")
 	//webserver.RunTest()
+	content.Get()
 	webserverfinal.Run()
 }

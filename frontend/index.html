@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./styles/main.css">
+    <title>Golang Practice Project</title>
+</head>
+<body>
+    <h1>Golang Practice Project Homepage</h1>
+
+    <section>
+        <h1>Webserver Options</h1>
+        <div>
+            <h1>Content Index</h1>
+            <div class="content-index-container">
+                {{range .SavedContent}}
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>BCrypt Password Key Generator</h2>
+        <div>
+            <label for="">Password
+                <input type="text" id="bycrpt-input-password">
+            </label>
+            <div id="bycrpt-result-div">
+                <p id="bycrpt-result"></p>
+            </div>
+        </div>
+    </section>
+    <script src="./index.js"></script>
+</body>
+</html>
