@@ -10,8 +10,9 @@ import (
 	"fmt"
 )
 
-var srcPath, srcErr = filepath.Abs(filepath.Dir("go-practice/src/"))
-var fPath = srcPath + "/"
+var pathBase, srcErr = filepath.Abs(filepath.Dir("go-practice/src/"))
+var pathPages = pathBase + "/"
+var pathContent = pathBase + "/content/"
 
 type Page struct {
 	Title string
@@ -20,12 +21,12 @@ type Page struct {
 
 func (p *Page) save() error {
 	filename := p.Title + ".txt"
-	return ioutil.WriteFile(fPath + filename, p.Body, 0600)
+	return ioutil.WriteFile(pathContent + filename, p.Body, 0600)
 }
 
 func loadPage(title string) (*Page, error) {
 	filename := title + ".txt"
-	body, err := ioutil.ReadFile(fPath + filename)
+	body, err := ioutil.ReadFile(pathContent + filename)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +51,7 @@ func editHandler(w http.ResponseWriter, r *http.Request, title string) {
 }
 
 func saveHandler(w http.ResponseWriter, r *http.Request, title string) {
-	fmt.Println("saveHandler:")
+	// fmt.Println("saveHandler:")
 
 	body := r.FormValue("body")
 	p := &Page{Title: title, Body: []byte(body)}
@@ -64,9 +65,9 @@ func saveHandler(w http.ResponseWriter, r *http.Request, title string) {
 
 var templates = template.Must(
 		template.ParseFiles(
-			fPath + "index.html",
-			fPath + "edit.html",
-			fPath + "view.html",
+			pathPages + "index.html",
+			pathPages + "edit.html",
+			pathPages + "view.html",
 			))
 
 func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
@@ -97,9 +98,9 @@ func Run() {
 		fmt.Println(srcErr)
 		return
 	}
-	fmt.Printf("src path: %s",fPath)
+	fmt.Printf("src path: %s",pathPages)
 
-	http.Handle("/", http.FileServer(http.Dir(fPath)))
+	http.Handle("/", http.FileServer(http.Dir(pathPages)))
 	http.HandleFunc("/view/", makeHandler(viewHandler))
 	http.HandleFunc("/edit/", makeHandler(editHandler))
 	http.HandleFunc("/save/", makeHandler(saveHandler))
